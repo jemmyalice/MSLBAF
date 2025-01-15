@@ -14,7 +14,8 @@ val: data/ImageSets/Main/val.txt
 val2: data/ImageSets/Main/val2.txt
 test: data/ImageSets/Main/val.txt
 # Classes
-nc: 7  # number of classes
-names: ['pedestrian','cyclist','car','bus','truck','traffic_light','traffic_sign']  # class names
+nc: 8  # number of classes
+# class names
+names: ['car', 'pickup', 'camping','truck', 'other', 'tractor', 'boat', 'van']
 
 

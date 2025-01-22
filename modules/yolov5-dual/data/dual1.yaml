@@ -8,12 +8,12 @@
 
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-train: data/ImageSets/Main/train.txt
-train2: data/ImageSets/Main/train2.txt
-val: data/ImageSets/Main/val.txt
-val2: data/ImageSets/Main/val2.txt
-test: data/ImageSets/Main/val.txt
+train: data/train.txt
+train2: data/train.txt
+val: data/train.txt
+val2: data/train.txt
+test: data/train.txt
+
 # Classes
-nc: 8  # number of classes
-# class names
-names: ['car', 'pickup', 'camping','truck', 'other', 'tractor', 'boat', 'van']
+nc: 7  # number of classes
+names: ['pedestrian','cyclist','car','bus','truck','traffic_light','traffic_sign']  # class names

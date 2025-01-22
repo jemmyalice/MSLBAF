@@ -542,12 +542,12 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
 #                                                                                                                     *
 #**********************************************************************************************************************
 def parse_opt(known=False):
+    # python train.py --data data/dual.yaml --cfg models/attentionuav7.yaml --weights weights/yolov5s.pt --batch-size 2 --epochs 1
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', type=str, default=ROOT / 'yolov5s.pt', help='initial weights path')#模型参数初始化
     parser.add_argument('--cfg', type=str, default='/home/cxl/yolov5/src/yolov5/models/yolov5s.yaml', help='model.yaml path')#训练模型
     parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='dataset.yaml path')
     parser.add_argument('--hyp', type=str, default=ROOT / 'data/hyps/hyp.scratch-low.yaml', help='hyperparameters path')#超参数设置，对模型微调
-
     parser.add_argument('--epochs', type=int, default=50)
     parser.add_argument('--batch-size', type=int, default=16, help='total batch size for all GPUs, -1 for autobatch')
     parser.add_argument('--imgsz', '--img', '--img-size', type=int, default=640, help='train, val image size (pixels)')#训练尺寸
@@ -576,7 +576,6 @@ def parse_opt(known=False):
     parser.add_argument('--freeze', nargs='+', type=int, default=[0], help='Freeze layers: backbone=10, first3=0 1 2')
     parser.add_argument('--save-period', type=int, default=-1, help='Save checkpoint every x epochs (disabled if < 1)')
     parser.add_argument('--local_rank', type=int, default=-1, help='DDP parameter, do not modify')
-
     # Weights & Biases arguments
     parser.add_argument('--entity', default=None, help='W&B: Entity')
     parser.add_argument('--upload_dataset', nargs='?', const=True, default=False, help='W&B: Upload data, "val" option')
@@ -584,6 +583,18 @@ def parse_opt(known=False):
     #parser.add_argument('--artifact_alias', type=str, default='latest', help='W&B: Version of dataset artifact to use')
 
     opt = parser.parse_known_args()[0] if known else parser.parse_args()
+    # # 检查并下载权重文件
+    # if not os.path.exists(opt.weights):
+    #     print(f"{opt.weights} not found. Downloading from Ultralytics...")
+    #     os.makedirs(os.path.dirname(opt.weights), exist_ok=True)
+    #     torch.hub.download_url_to_file(
+    #         f"https://github.com/ultralytics/yolov5/releases/download/v7.0/{os.path.basename(opt.weights)}",  # 动态权重文件名
+    #         opt.weights  # 保存路径
+    #     )
+    #     print(f"{opt.weights} downloaded successfully.")
+    # else:
+    #     print(f"{opt.weights} already exists.")
+
     return opt
 
 #**********************************************************************************************************************

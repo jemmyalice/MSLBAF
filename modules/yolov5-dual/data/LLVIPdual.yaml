@@ -8,11 +8,12 @@
 
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-train: data/ImageSets/Main/train.txt
-train2: data/ImageSets/Main/train2.txt
-val: data/ImageSets/Main/val.txt
-val2: data/ImageSets/Main/val2.txt
-test: data/ImageSets/Main/val.txt
+#IMGAE IS VISIBLE
+train: data/ImageSets/Main1/train.txt
+train2: data/ImageSets/Main1/train2.txt
+val: data/ImageSets/Main1/val.txt
+val2: data/ImageSets/Main1/val2.txt
+test: data/ImageSets/Main1/val.txt
 # number of classes
 nc: 1
 # class names

@@ -583,17 +583,17 @@ def parse_opt(known=False):
     #parser.add_argument('--artifact_alias', type=str, default='latest', help='W&B: Version of dataset artifact to use')
 
     opt = parser.parse_known_args()[0] if known else parser.parse_args()
-    # # 检查并下载权重文件
-    # if not os.path.exists(opt.weights):
-    #     print(f"{opt.weights} not found. Downloading from Ultralytics...")
-    #     os.makedirs(os.path.dirname(opt.weights), exist_ok=True)
-    #     torch.hub.download_url_to_file(
-    #         f"https://github.com/ultralytics/yolov5/releases/download/v7.0/{os.path.basename(opt.weights)}",  # 动态权重文件名
-    #         opt.weights  # 保存路径
-    #     )
-    #     print(f"{opt.weights} downloaded successfully.")
-    # else:
-    #     print(f"{opt.weights} already exists.")
+    # 检查并下载权重文件
+    if not os.path.exists(opt.weights):
+        print(f"{opt.weights} not found. Downloading from Ultralytics...")
+        os.makedirs(os.path.dirname(opt.weights), exist_ok=True)
+        torch.hub.download_url_to_file(
+            f"https://github.com/ultralytics/yolov5/releases/download/v7.0/{os.path.basename(opt.weights)}",  # 动态权重文件名
+            opt.weights  # 保存路径
+        )
+        print(f"{opt.weights} downloaded successfully.")
+    else:
+        print(f"{opt.weights} already exists.")
 
     return opt
 

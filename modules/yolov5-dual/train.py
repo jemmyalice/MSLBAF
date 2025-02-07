@@ -584,7 +584,7 @@ def parse_opt(known=False):
 
     opt = parser.parse_known_args()[0] if known else parser.parse_args()
     # 检查并下载权重文件
-    if not os.path.exists(opt.weights) and opt.weights != None:
+    if not os.path.exists(opt.weights) and opt.weights != '':
         print(f"{opt.weights} not found. Downloading from Ultralytics...")
         os.makedirs(os.path.dirname(opt.weights), exist_ok=True)
         torch.hub.download_url_to_file(
